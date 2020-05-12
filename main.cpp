@@ -23,12 +23,41 @@ OTHER NOTES:
 using namespace std;
 using namespace cv;
 
+// CONSTANTS
+#define W 200
+
+//List functions
+void drawBoundingBoxes(Mat img, int posX, int posY, int width, int height);
+
 int main() {
-	Mat img = imread("fatSquirttle.jpg");
+	Mat img = imread("img1.png");
+	drawBoundingBoxes(img, 100, 100, 30, 40);
+	/*
 	Mat grayImg;
 	cvtColor(img, grayImg, COLOR_BGR2GRAY);
 	namedWindow("image", WINDOW_NORMAL);
 	imshow("image", grayImg);
 	waitKey(0);
+	*/
 	return 0;
+}
+
+/*
+Purpose:
+Param:	img		-	image that we want to draw the bounding boxes (ellipses)
+					on (multidimensional array)
+		posX	-	position of the bounding ellipse in the x direction
+		posY	-	position of the boudning ellipse in the y direction
+		width	-	width of bounding ellipse
+		height	-	height of bounding ellipse
+*/
+void drawBoundingBoxes(Mat img, int posX, int posY, int width, int height) {
+	int thickness = 2;
+	int lineType = 8;
+	int angle = 30;
+	Scalar color = Scalar(0, 0, 255); // BGR
+
+	ellipse(img, Point(posX, posY), Size(width, height), angle, 0, 360, color, thickness, lineType);
+	imshow("image2", img);
+	waitKey();
 }
