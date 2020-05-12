@@ -27,11 +27,12 @@ using namespace cv;
 #define W 200
 
 //List functions
-void drawBoundingBoxes(Mat img, int posX, int posY, int width, int height);
+void drawBoundingBox(Mat img, int posX, int posY, int width, int height);
 
 int main() {
 	Mat img = imread("img1.png");
-	drawBoundingBoxes(img, 100, 100, 30, 40);
+	// origin of image is top left corner with regular x and y axes
+	drawBoundingBox(img, 200, 150, 15, 10);
 	/*
 	Mat grayImg;
 	cvtColor(img, grayImg, COLOR_BGR2GRAY);
@@ -43,18 +44,18 @@ int main() {
 }
 
 /*
-Purpose:
-Param:	img		-	image that we want to draw the bounding boxes (ellipses)
-					on (multidimensional array)
-		posX	-	position of the bounding ellipse in the x direction
-		posY	-	position of the boudning ellipse in the y direction
-		width	-	width of bounding ellipse
-		height	-	height of bounding ellipse
+Purpose:	draws a bounding box (ellipse) on a given image with a provided position
+			and size
+Param:		img		-	image that we want to draw on
+			posX	-	position of the bounding ellipse in the x direction
+			posY	-	position of the boudning ellipse in the y direction
+			width	-	width of bounding ellipse
+			height	-	height of bounding ellipse
 */
-void drawBoundingBoxes(Mat img, int posX, int posY, int width, int height) {
+void drawBoundingBox(Mat img, int posX, int posY, int width, int height) {
 	int thickness = 2;
 	int lineType = 8;
-	int angle = 30;
+	int angle = 0;
 	Scalar color = Scalar(0, 0, 255); // BGR
 
 	ellipse(img, Point(posX, posY), Size(width, height), angle, 0, 360, color, thickness, lineType);
