@@ -20,11 +20,12 @@ OTHER NOTES:
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include "Util.h"
 using namespace std;
 using namespace cv;
 
 // CONSTANTS
-#define W 200
+#define WIDTH 200
 
 //List functions
 void drawBoundingBox(Mat img, int posX, int posY, int width, int height);
