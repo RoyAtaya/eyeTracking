@@ -31,9 +31,31 @@ using namespace cv;
 void drawBoundingBox(Mat img, int posX, int posY, int width, int height);
 
 int main() {
-	Mat img = imread("img1.png");
-	// origin of image is top left corner with regular x and y axes
-	drawBoundingBox(img, 200, 150, 15, 10);
+	//initialize and allocate memory to load the video stream from camera 
+	VideoCapture camera(0);
+
+	if (!camera.isOpened()) return 1;
+
+	Mat frame;
+	int count = -1;
+	while (true) {
+		camera.read(frame);
+		flip(frame, frame, 1);
+
+		imshow("Video", frame);
+
+		++count;
+
+		Mat save_img; camera >> save_img;
+		imwrite("test" + to_string(count) + ".jpg", save_img); // A JPG FILE IS BEING SAVED
+
+		//exit the loop if user press "Esc" key  (ASCII value of "Esc" is 27) 
+		if (27 == char(waitKey(10))) break;
+	}
+
+	//Mat img = imread("img1.png");
+	//origin of image is top left corner with regular x and y axes
+	//drawBoundingBox(img, 200, 150, 15, 10);
 	/*
 	Mat grayImg;
 	cvtColor(img, grayImg, COLOR_BGR2GRAY);
