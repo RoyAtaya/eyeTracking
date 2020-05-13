@@ -46,8 +46,9 @@ int main() {
 
 		++count;
 
-		Mat save_img; camera >> save_img;
-		imwrite("test" + to_string(count) + ".jpg", save_img); // A JPG FILE IS BEING SAVED
+		imwrite("test" + to_string(count) + ".jpg", frame); // A JPG FILE IS BEING SAVED
+
+		waitKey();
 
 		//exit the loop if user press "Esc" key  (ASCII value of "Esc" is 27) 
 		if (27 == char(waitKey(10))) break;
