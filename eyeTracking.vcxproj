@@ -141,10 +141,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="imageManipulation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="imageManipulation.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
